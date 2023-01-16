@@ -12,16 +12,14 @@ interface ApiInterface {
 
     companion object {
 
-        val BASE_URL = "https://meme-api.herokuapp.com/"
+        private const val BASE_URL = "https://meme-api.com/"
 
         fun create() : ApiInterface {
-          val retrofit = Retrofit.Builder()
+          return Retrofit.Builder()
               .baseUrl(BASE_URL)
               .addConverterFactory(GsonConverterFactory.create())
               .build()
-
-            return retrofit.create(ApiInterface::class.java)
-
+              .create(ApiInterface::class.java)
         }
     }
 }

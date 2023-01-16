@@ -42,31 +42,18 @@ class MemeShareActivity : AppCompatActivity() {
                 if(response.isSuccessful) {
 
                  mMemeUrl = response.body()?.url
-                    Glide
-                        .with(this@MemeShareActivity)
+                    Glide.with(this@MemeShareActivity)
                         .load(mMemeUrl)
                         .listener(object : RequestListener<Drawable> {
-                            override fun onLoadFailed(
-                                e: GlideException?,
-                                model: Any?,
-                                target: Target<Drawable>?,
-                                isFirstResource: Boolean
-                            ): Boolean {
+                            override fun onLoadFailed(e: GlideException?, model: Any?, target: Target<Drawable>?, isFirstResource: Boolean): Boolean {
                                 progress_circular_act_meme.visibility = View.GONE
                                 return false
                             }
 
-                            override fun onResourceReady(
-                                resource: Drawable?,
-                                model: Any?,
-                                target: Target<Drawable>?,
-                                dataSource: DataSource?,
-                                isFirstResource: Boolean
-                            ): Boolean {
+                            override fun onResourceReady(resource: Drawable?, model: Any?, target: Target<Drawable>?, dataSource: DataSource?, isFirstResource: Boolean): Boolean {
                                 progress_circular_act_meme.visibility = View.GONE
                                 return false
                             }
-
                         }).into(img_act_meme_share)
 
                 }
@@ -83,11 +70,11 @@ class MemeShareActivity : AppCompatActivity() {
     }
 
 
-    fun nextMeme(view: View) {
+    fun nextMeme() {
         getMeme()
     }
 
-    fun shareMeme(view: View) {
+    fun shareMeme() {
 
         val intent : Intent = Intent().apply {
             action = Intent.ACTION_SEND
